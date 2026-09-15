@@ -1,0 +1,38 @@
+.product-image{
+    height:240px;
+    object-fit:cover
+}
+.placeholder-image{
+    height:240px;
+    background:#f1f3f5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#6c757d
+}
+.detail-image{
+    width:100%;
+    max-height:520px;
+    object-fit:contain;
+    background:#f8f9fa
+}
+.auth-card{
+    max-width:500px;
+    margin:40px auto;
+    padding:30px;
+    border:1px solid #dee2e6;
+    border-radius:16px;
+    box-shadow:0 4px 16px rgba(0,0,0,.08)
+}
+.auth-card input,.auth-card select,.auth-card textarea{
+    width:100%;
+    padding:.5rem;
+    border:1px solid #ced4da;
+    border-radius:.375rem
+}
+.auth-card p label{
+    font-weight:600
+}
+.qty{
+    max-width:90px
+}

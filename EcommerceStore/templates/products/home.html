@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="p-5 bg-light rounded-4 mb-4 text-center">
+    <h1 class="fw-bold">Shop Your Favorite Products</h1>
+    <div class="intro-badge lead fw-bold mb-4">
+                ✨ Welcome to Your Shopping Destination
+            </div>
+            <p>
+                Discover quality products, exciting deals, and effortless shopping all in one place. 
+                <br>Explore a wide range of products, enjoy secure and convenient shopping, and find everything you need at great prices. 🛍️✨
+            </p>
+</div>
+
+<form class="row g-2 mb-4">
+    <div class="col-md-7">
+        <input class="form-control" name="q" value="{{ query }}" placeholder="Search products..."></div>
+        <div class="col-md-3">
+            <select class="form-select" name="category">
+                <option value="">All Categories</option>
+                {% for c in categories %}
+                <option value="{{ c.slug }}" {% if selected_category == c.slug %}selected{% endif %}>{{ c.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-dark w-100">Search</button>
+        </div>
+    </form>
+    <div class="row g-4">
+        {% for p in products %}
+        <div class="col-sm-6 col-lg-3">
+            <div class="card h-100 shadow-sm border-0">
+                {% if p.image %}
+                <img src="{{ p.image.url }}" class="card-img-top product-image" alt="{{ p.name }}">
+                {% else %}
+                <div class="placeholder-image">No Image</div>
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <small class="text-muted">{{ p.category.name }}</small>
+                    <h5>{{ p.name }}</h5>
+                    <h5>₹{{ p.price }}</h5>
+                    <p class="text-muted flex-grow-1">{{ p.description|truncatewords:15 }}</p>
+                    <a class="btn btn-outline-dark" href="{{ p.get_absolute_url }}">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-warning">No products found.</div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3"></div>
+    
+    <div class="col-md-6">
+        <div class="card p-4 text-center">
+            <h4>Total Order</h4>
+            <h3><b>₹{{ total }}</b></h3>
+        </div><br>
+        <div class="card p-4">
+            <h2 class="text-center">Checkout</h2>
+            <form method="post">
+                {% csrf_token %}{{ form.as_p }}
+                <button class="btn btn-success w-100">Place Order</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}
